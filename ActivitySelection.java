@@ -1,4 +1,8 @@
 import java.util.*;
+import java.io.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 
 public class ActivitySelection {
 
@@ -15,8 +19,9 @@ for(j=1;j<5;j++)
 	i=j;
 }
 	}
-public static void main(String args[])	{
-	Scanner sc=new Scanner(System.in);
+public static void main(String args[])throws Exception	{
+	Object obj=new JSONParser().parse(new FileReader("C:\Users\win10\1941012832"));
+	JSONObject jo=(JSONObject) obj;
 	int k;
 	String m[];
 	int s[];
@@ -26,10 +31,10 @@ public static void main(String args[])	{
   	f=new int[5];
   	for(k=0;k<5;k++)
   	{
-  		System.out.println("Enter job title,start time,end time");
-  		m[k]=sc.next();
-		s[k]=sc.nextInt();
-		f[k]=sc.nextInt();
+  		
+  		m[k]=(String) jo.get("Job Title");
+		s[k]=(int) jo.get("Start time");
+		f[k]=(int) jo.get("Finish time");
 		
   		
   	}
